@@ -1,103 +1,55 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEnvelope, faLock, } from '@fortawesome/free-solid-svg-icons';
+"use client";
 
-export default function Signup() {
-  return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl flex items-center">
-        {/* Left Section */}
-        <div className="w-1/2">
-          {/* Top SVG Icon */}
-          <div className="flex justify-center mb-6">
-            <FontAwesomeIcon
-              icon={faUser}
-              className="text-blue-600 size-11"
-            />
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { FaLock, FaEnvelope, FaSignInAlt } from "react-icons/fa";
+
+const LoginPageComponent = () => (
+  <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <Card className="w-full max-w-4xl shadow-2xl flex flex-col md:flex-row h-auto md:h-[500px]">
+      <CardContent className="p-6 md:p-8 w-full md:w-1/2 flex flex-col justify-center">
+        <div className="text-center mb-6">
+          <FaSignInAlt className="text-4xl text-blue-600 mx-auto mb-2" />
+          <h1 className="text-3xl font-bold text-gray-800">Welcome!</h1>
+          <p className="text-gray-500">Sign in to your account</p>
+        </div>
+        <form>
+          {[
+            { id: "email", type: "email", placeholder: "Enter your email", Icon: FaEnvelope },
+            { id: "password", type: "password", placeholder: "Enter your password", Icon: FaLock },
+          ].map(({ id, type, placeholder, Icon }) => (
+            <div key={id} className="mb-4 relative">
+              <label htmlFor={id} className="block text-gray-600 font-medium mb-1">
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </label>
+              <div className="relative">
+                <Input id={id} type={type} placeholder={placeholder} className="pl-10" />
+                <Icon className="absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400" />
+              </div>
+            </div>
+          ))}
+          <div className="flex items-center justify-between mb-4 text-sm text-gray-600">
+            <div className="flex items-center">
+              <Checkbox id="remember-me" className="mr-2" />
+              <label htmlFor="remember-me">Remember me?</label>
+            </div>
+            <a href="#" className="text-blue-600 hover:underline">Forgot Password?</a>
           </div>
-          <h1 className="font-sans text-3xl font-bold text-center mb-6">Create an Account</h1>
-          <form>
-            {/* Name Input */}
-            <div className="mb-4 relative">
-              <label htmlFor="name" className=" font-sans block text-sm font-medium text-gray-700">
-                Name
-              </label>
-              <div className="relative mt-1">
-                {/* <FontAwesomeIcon
-                  icon={faUser}
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                /> */}
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Enter your name"
-                  className="font-sans w-full px-2 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-            </div>
+          <Button type="submit" className="w-full bg-blue-600 text-white py-2">Login</Button>
+        </form>
+        <p className="text-center text-sm text-gray-500 mt-4">
+          Don’t have an account? <a href="#" className="text-blue-600 hover:underline">Sign Up</a>
+        </p>
+      </CardContent>
 
-            {/* Email Input */}
-            <div className="mb-4 relative">
-              <label htmlFor="email" className="font-sans block text-sm font-medium text-gray-700">
-                Email
-              </label>
-              <div className="relative mt-1">
-                {/* <FontAwesomeIcon
-                  icon={faEnvelope}
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                /> */}
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Enter your email"
-                  className="font-sans w-full px-2 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-            </div>
-
-            {/* Password Input */}
-            <div className="mb-6 relative">
-              <label htmlFor="password" className="font-sans block text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <div className="relative mt-1">
-                {/* <FontAwesomeIcon
-                  icon={faLock}
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                /> */}
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="Enter your password"
-                  className="font-sans w-full px-2 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              className="font-sans w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition"
-            >
-              Create Account
-            </button>
-          </form>
-          <p className="font-sans mt-4 text-sm text-center text-gray-600">
-            Already have an account?{' '}
-            <a href="/login" className="text-blue-600 font-sans hover:underline">
-              Log in
-            </a>
-          </p>
-        </div>
-
-        {/* Right Section */}
-        <div className="w-1/2 hidden md:block">
-          <img
-            src="/signup-illustration.png"
-            alt="Signup illustration"
-            className="w-full h-auto"
-          />
-        </div>
+      <div className="w-full md:w-1/2 hidden md:flex items-center justify-center rounded-b-lg md:rounded-r-xl overflow-hidden">
+        <img src="/login.avif" alt="Illustration" className="w-full h-full object-cover" />
       </div>
-    </div>
-  );
-}
+    </Card>
+  </div>
+);
+
+export default LoginPageComponent;
