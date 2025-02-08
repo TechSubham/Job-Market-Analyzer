@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Select, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from "@/components/ui/select";
 
 const LanguageSelection = () => {
   const [languages, setLanguages] = useState([{ name: "English", proficiency: "Fluent" }]);
@@ -54,10 +54,12 @@ const LanguageSelection = () => {
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select Proficiency" />
               </SelectTrigger>
-              <SelectItem value="Basic">Basic</SelectItem>
-              <SelectItem value="Conversational">Conversational</SelectItem>
-              <SelectItem value="Fluent">Fluent</SelectItem>
-              <SelectItem value="Native">Native</SelectItem>
+              <SelectContent>
+                <SelectItem value="Basic">Basic</SelectItem>
+                <SelectItem value="Conversational">Conversational</SelectItem>
+                <SelectItem value="Fluent">Fluent</SelectItem>
+                <SelectItem value="Native">Native</SelectItem>
+              </SelectContent>
             </Select>
             <Button onClick={addLanguage} className="w-full">Save</Button>
           </div>
