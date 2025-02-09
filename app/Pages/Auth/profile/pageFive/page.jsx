@@ -11,7 +11,12 @@ export default function SkillsSelection() {
   const [inputValue, setInputValue] = useState("");
   const router = useRouter();
 
-  const suggestedSkills = ["Photography", "Animation"];
+  const suggestedSkills = [
+    "Photography", "Animation", "Web Development", "Graphic Design", 
+    "Content Writing", "Video Editing", "SEO", "UI/UX Design", 
+    "Data Analysis", "Cybersecurity", "Digital Marketing", "Blockchain Development", 
+    "Artificial Intelligence", "Project Management", "Cloud Computing"
+  ];
 
   const addSkill = (skill) => {
     if (skills.length < 15 && !skills.includes(skill)) {
@@ -29,7 +34,6 @@ export default function SkillsSelection() {
       setInputValue("");
     }
   };
-  
 
   return (
     <div className="max-w-2xl mx-auto p-6 space-y-6">
@@ -61,7 +65,7 @@ export default function SkillsSelection() {
 
       <div>
         <p className="font-semibold">Suggested skills</p>
-        <div className="flex gap-2 mt-2">
+        <div className="flex flex-wrap gap-2 mt-2">
           {suggestedSkills.map((skill) => (
             <Button
               key={skill}
@@ -86,13 +90,14 @@ export default function SkillsSelection() {
       </Card>
 
       <div className="flex justify-between">
-        <Button variant="outline" 
-        onClick={() => router.push("pageThree")}
-        >Back
-        </Button>
-        <Button className="bg-green-600 text-white"
-        onClick={() => router.push("pageSix")}
-        >Next, your profile title
+      <button 
+            className="bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400"
+            onClick={() => router.push("pageThree")}
+          >
+            Back
+          </button>
+        <Button className="bg-blue-900 text-white rounded-lg hover:bg-blue-700" onClick={() => router.push("pageSix")}>
+          Next, your profile title
         </Button>
       </div>
     </div>
