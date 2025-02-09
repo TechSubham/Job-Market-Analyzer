@@ -2,7 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 
-const UpworkOnboarding = () => {
+const Onboarding = () => {
   const router = useRouter();
 
   return (
@@ -28,7 +28,7 @@ const UpworkOnboarding = () => {
         <p className="mt-6 text-sm text-gray-500">It only takes 5-10 minutes and you can edit it later. We’ll save as you go.</p>
 
         <button 
-          className="mt-6 w-full bg-green-600 text-white py-2 rounded-lg text-lg font-semibold hover:bg-green-700"
+          className="mt-6 w-full bg-blue-900 text-white py-2 rounded-lg text-lg font-semibold hover:bg-blue-700"
           onClick={() => router.push("pageTwo")}
         >
           Get started
@@ -38,4 +38,4 @@ const UpworkOnboarding = () => {
   );
 };
 
-export default UpworkOnboarding;
+export default Onboarding;
