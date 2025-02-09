@@ -6,11 +6,11 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from "@/components/ui/select";
 
 const LanguageSelection = () => {
-  const [languages, setLanguages] = useState([{ name: "English", proficiency: "Fluent" }]);
+  const [languages, setLanguages] = useState([]); // Start with an empty list
   const [isOpen, setIsOpen] = useState(false);
   const [newLanguage, setNewLanguage] = useState("");
   const [proficiency, setProficiency] = useState("Fluent");
-  const router = useRouter(); 
+  const router = useRouter();
 
   const addLanguage = () => {
     if (newLanguage && proficiency) {
@@ -25,13 +25,18 @@ const LanguageSelection = () => {
     <div className="p-6 max-w-lg mx-auto bg-white shadow-md rounded-lg flex flex-col min-h-screen">
       <h2 className="text-xl font-bold">Looking good. Next, tell us which languages you speak.</h2>
 
+      {/* Language List (Empty Initially) */}
       <div className="mt-4 flex-grow">
-        {languages.map((lang, index) => (
-          <div key={index} className="flex justify-between p-2 border rounded-lg mb-2">
-            <span>{lang.name}</span>
-            <span className="text-gray-500">{lang.proficiency}</span>
-          </div>
-        ))}
+        {languages.length === 0 ? (
+          <p className="text-gray-500">No languages added yet.</p>
+        ) : (
+          languages.map((lang, index) => (
+            <div key={index} className="flex justify-between p-2 border rounded-lg mb-2">
+              <span>{lang.name}</span>
+              <span className="text-gray-500">{lang.proficiency}</span>
+            </div>
+          ))
+        )}
       </div>
 
       <Button className="mt-4" onClick={() => setIsOpen(true)}>+ Add a language</Button>
@@ -75,7 +80,7 @@ const LanguageSelection = () => {
           Back
         </Button>
         <Button 
-          className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700" 
+          className="bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-700" 
           onClick={() => router.push("pageTen")} 
         >
           Next
