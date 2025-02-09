@@ -28,7 +28,7 @@ const ProfileTitle = () => {
           onClick={() => router.push("pageFive")}
           >
             Back</button>
-          <button className="bg-green-500 text-white px-4 py-2 rounded-lg"
+          <button className="bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
            onClick={() => router.push("pageSeven")}
            >Next, add your experience</button>
         </div>
